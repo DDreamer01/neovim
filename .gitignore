@@ -1,0 +1,19 @@
+# Neovim local state & temporary files
+*.swp
+*.swo
+*.tmp
+*~
+
+# Persistent undo and swap
+undo/
+swap/
+backup/
+view/
+
+# Local workspace specific settings
+.luarc.json.user
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
