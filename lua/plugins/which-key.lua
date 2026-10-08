@@ -13,12 +13,14 @@ return {
   opts = {
     preset = "modern",
     spec = {
-      { "<leader>f", group = "Find / Telescope" },
-      { "<leader>s", group = "Split Windows" },
-      { "<leader>c", group = "Code / LSP" },
-      { "<leader>h", group = "Git Hunks" },
-      { "<leader>u", group = "UI Toggles" },
-      { "<leader>t", group = "Terminal" },
+      { "<leader>f", group = "Find / Search (Files, Grep, TODOs)" },
+      { "<leader>t", group = "Terminal (Float, Horizontal, Vertical)" },
+      { "<leader>s", group = "Splits & Windows" },
+      { "<leader>g", group = "Git & LazyGit" },
+      { "<leader>c", group = "Code & LSP" },
+      { "<leader>h", group = "Harpoon Marks" },
+      { "<leader>x", group = "Diagnostics & Trouble" },
+      { "<leader>u", group = "UI & Toggles (Cursor Smear, UndoTree)" },
     },
   },
 }

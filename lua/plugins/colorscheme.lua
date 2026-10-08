@@ -3,23 +3,25 @@
 -- ==========================================================================
 
 return {
-  "folke/tokyonight.nvim",
-  priority = 1000, -- Highest priority to ensure colorscheme applies immediately
-  lazy = false,
-  opts = {
-    style = "night", -- Styles: 'storm', 'moon', 'night', 'day'
-    transparent = false,
-    styles = {
-      comments = { italic = true },
-      keywords = { italic = true },
-      functions = {},
-      variables = {},
-      sidebars = "dark",
-      floats = "dark",
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      style = "night",
+      transparent = false,
+    },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd("colorscheme tokyonight")
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = true,
+    opts = {
+      flavour = "mocha",
     },
   },
-  config = function(_, opts)
-    require("tokyonight").setup(opts)
-    vim.cmd("colorscheme tokyonight")
-  end,
 }

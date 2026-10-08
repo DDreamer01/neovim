@@ -77,6 +77,16 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `<Space>tt` | Normal | Open bottom integrated terminal |
 | `<Esc><Esc>` | Terminal | Exit terminal input mode to navigate buffer |
 
+### 🖥️ Integrated Terminal (`<Space>t...` / `<C-\>`)
+
+| Shortcut | Mode | Description |
+|---|---|---|
+| `<Space>tt` | Normal | Toggle **Floating** centered terminal popup |
+| `<Space>th` | Normal | Toggle **Horizontal** terminal split across bottom |
+| `<Space>tv` | Normal | Toggle **Vertical** terminal split on right side |
+| `<C-\>` | Normal/Term | Quick toggle active terminal |
+| `jk` or `<Esc><Esc>` | Terminal | Exit terminal input mode to navigate buffer |
+
 ### 📑 Buffer Management (Tabs)
 
 | Shortcut | Mode | Description |
@@ -85,7 +95,7 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `<S-h>` / `[b` | Normal | Go to previous buffer tab |
 | `<Space>x` | Normal | Close current buffer (keeps window split intact) |
 
-### 🪟 Window Splits
+### 🪟 Window Splits (`<Space>s...`)
 
 | Shortcut | Mode | Description |
 |---|---|---|
@@ -93,6 +103,7 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `<Space>sh` | Normal | Split window horizontally |
 | `<Space>se` | Normal | Make split sizes equal |
 | `<Space>sx` | Normal | Close current split |
+| `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Normal | Navigate across window splits |
 | `<C-Up>` / `<C-Down>` | Normal | Increase / decrease window height |
 | `<C-Left>` / `<C-Right>` | Normal | Decrease / increase window width |
 
@@ -104,11 +115,42 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `<Space>fg` | Normal | Live grep (search text across all files) |
 | `<Space>fb` | Normal | List open buffers |
 | `<Space>fr` | Normal | Recent files |
+| `<Space>ft` | Normal | Search **TODO** / FIXME / BUG comments |
 | `<Space>fh` | Normal | Search Neovim help documentation |
 | `<Space>fk` | Normal | Search all active keymaps |
 | `<Space>fs` | Normal | Search LSP document symbols |
 
-### 🧠 LSP & Code Intelligence
+### 🐙 Git Integration (`<Space>g...` & `<Space>h...`)
+
+| Shortcut | Mode | Description |
+|---|---|---|
+| `<Space>gg` | Normal | Open **LazyGit** full interactive TUI modal |
+| `<Space>hp` | Normal | Preview git hunk under cursor |
+| `<Space>hs` | Normal/Visual | Stage hunk |
+| `<Space>hr` | Normal/Visual | Reset hunk |
+| `<Space>hb` | Normal | Blame line detail |
+| `]c` / `[c` | Normal | Jump to next / previous git hunk |
+
+### 🎯 Harpoon Quick Marks (`<Space>h...` / `<Space>1..4`)
+
+| Shortcut | Mode | Description |
+|---|---|---|
+| `<Space>ha` | Normal | Mark current file in Harpoon |
+| `<Space>hh` | Normal | Open Harpoon quick menu |
+| `<Space>1`..`<Space>4` | Normal | Jump directly to Harpoon pinned file 1, 2, 3, or 4 |
+
+### 🩺 Diagnostics & Trouble (`<Space>x...`)
+
+| Shortcut | Mode | Description |
+|---|---|---|
+| `<Space>xx` | Normal | Toggle **Trouble** diagnostics list drawer |
+| `<Space>xX` | Normal | Toggle buffer-local diagnostics |
+| `<Space>xt` | Normal | Toggle TODOs drawer |
+| `<Space>xQ` | Normal | Toggle Quickfix list |
+| `<Space>d` | Normal | Show floating line diagnostic |
+| `[d` / `]d` | Normal | Jump to previous / next diagnostic |
+
+### 🧠 LSP & Code Intelligence (`<Space>c...`)
 
 | Shortcut | Mode | Description |
 |---|---|---|
@@ -119,8 +161,6 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `gr` | Normal | Find references |
 | `<Space>rn` | Normal | Rename variable / symbol project-wide |
 | `<Space>ca` | Normal | Code actions (fixes, quick-refactors) |
-| `<Space>d` | Normal | Show floating line diagnostic |
-| `[d` / `]d` | Normal | Jump to previous / next diagnostic |
 | `<Space>cf` | Normal/Visual | Format code with conform (shfmt / ruff / gofumpt) |
 
 ### ✏️ Editing & Visual Motions
@@ -128,6 +168,7 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | Shortcut | Mode | Description |
 |---|---|---|
 | `jk` | Insert / Terminal | Exit insert / terminal mode (replaces `ESC`) |
+| `s` / `S` | Normal/Visual | **Flash** jump anywhere on screen instantly |
 | `J` / `K` | Visual | Move selected lines down / up smoothly |
 | `<` / `>` | Visual | Indent left / right (preserves selection) |
 | `p` | Visual | Paste without replacing clipboard register |
@@ -136,11 +177,12 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 | `<C-space>` | Normal | Expand Treesitter syntax selection |
 | `<BS>` | Visual | Shrink Treesitter syntax selection |
 
-### 🌀 Cursor Animation Toggle
+### 🎛️ UI & Toggles (`<Space>u...`)
 
 | Shortcut | Mode | Description |
 |---|---|---|
-| `<Space>uc` | Normal | Toggle terminal smear-cursor animation on / off |
+| `<Space>uc` | Normal | Toggle terminal **Smear-Cursor** animation on / off |
+| `<Space>uu` | Normal | Toggle **UndoTree** visual branch history |
 
 ---
 
