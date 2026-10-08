@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ DDreamer01's Neovim IDE
+# ⚡ The Dreamer's Neovim IDE
 
 ### *A High-Performance, Modular Neovim Development Environment with Fluid Motion Physics*
 
