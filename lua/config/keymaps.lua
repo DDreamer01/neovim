@@ -78,6 +78,13 @@ keymap("n", "<leader>x", function()
 end, { desc = "Close buffer" })
 
 -- -------------------------------------------------------------------------
+-- Insert Mode Ergonomics
+-- -------------------------------------------------------------------------
+
+-- Map jk to ESC to quickly return to Normal mode
+keymap("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+
+-- -------------------------------------------------------------------------
 -- Visual Mode Editing Ergonomics
 -- -------------------------------------------------------------------------
 
@@ -98,8 +105,9 @@ keymap("v", "p", '"_dP', { desc = "Paste without overwriting register" })
 -- Terminal Ergonomics
 -- -------------------------------------------------------------------------
 
--- Quick escape from terminal insert mode back to normal mode with Esc Esc
+-- Quick escape from terminal insert mode back to normal mode with Esc Esc or jk
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal insert mode" })
+keymap("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal insert mode with jk" })
 
 -- Terminal window navigation
 keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal: focus left" })

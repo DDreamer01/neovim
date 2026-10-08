@@ -127,6 +127,7 @@ Inspired by the [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-
 
 | Shortcut | Mode | Description |
 |---|---|---|
+| `jk` | Insert / Terminal | Exit insert / terminal mode (replaces `ESC`) |
 | `J` / `K` | Visual | Move selected lines down / up smoothly |
 | `<` / `>` | Visual | Indent left / right (preserves selection) |
 | `p` | Visual | Paste without replacing clipboard register |
