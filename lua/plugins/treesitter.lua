@@ -48,5 +48,7 @@ return {
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
+    -- Map 'sh' filetype to 'bash' treesitter parser
+    vim.treesitter.language.register("bash", "sh")
   end,
 }
