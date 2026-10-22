@@ -25,6 +25,12 @@
 
 ---
 
+<div align="center">
+  <img src="assets/preview.png" alt="The Dreamer's Neovim IDE Preview" width="100%">
+</div>
+
+---
+
 A modern, blazing-fast, and modular Neovim configuration built with Lua. Tailored specifically for writing **Bash**, **Python**, and **Golang**, with real-world cursor physics animations (in terminal and Neovide), complete LSP intelligence, automated format-on-save, and interactive keybinding discovery.
 
 Inspired by Christian Chiarulli’s [Neovim IDE from Scratch](https://www.youtube.com/watch?v=ctH-a-1eUME&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ) and the visual aesthetics from [Magicalbat](https://www.youtube.com/watch?v=YM8Ftn3W0E0).
@@ -75,13 +81,16 @@ git clone https://github.com/DDreamer01/neovim.git ~/.config/nvim && ~/.config/n
 ├── install.sh               # Cross-platform automated setup script
 ├── .gitignore               # Ignores swap, undo, and local cache files
 ├── README.md                # Documentation & keybinding guide
+├── assets/
+│   └── preview.png          # IDE screenshot preview
 └── lua/
     ├── config/
     │   ├── options.lua      # Line numbers, tabs, clipboard, mouse, undo
     │   ├── keymaps.lua      # General navigation, splits, and 'jk' escape mapping
-    │   ├── autocmds.lua     # Yank highlight, auto-resize, sh->bash mapping
+    │   ├── autocmds.lua     # Yank highlight, auto-resize, transparency persistence
     │   └── neovide.lua      # Neovide GPU cursor VFX and animations
     └── plugins/
+        ├── dashboard.lua    # Welcome page with quick actions
         ├── cursor.lua       # Smear-cursor terminal physics animation
         ├── colorscheme.lua  # TokyoNight & Catppuccin Mocha themes
         ├── lsp.lua          # Mason, mason-tool-installer, nvim-lspconfig
