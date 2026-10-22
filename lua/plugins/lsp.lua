@@ -149,8 +149,6 @@ return {
       },
     }
 
-    local lspconfig = require("lspconfig")
-
     -- Setup Mason-lspconfig to ensure key servers are present
     require("mason-lspconfig").setup({
       ensure_installed = { "bashls", "pyright", "gopls", "lua_ls" },
@@ -159,7 +157,12 @@ return {
         function(server_name)
           local server_opts = servers[server_name] or {}
           server_opts.capabilities = capabilities
-          lspconfig[server_name].setup(server_opts)
+          if vim.lsp and vim.lsp.config then
+            vim.lsp.config(server_name, server_opts)
+            vim.lsp.enable(server_name)
+          else
+            require("lspconfig")[server_name].setup(server_opts)
+          end
         end,
       },
     })

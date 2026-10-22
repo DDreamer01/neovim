@@ -16,6 +16,7 @@ return {
     },
     "nvim-tree/nvim-web-devicons",
   },
+  cmd = { "Telescope" },
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find files" },
     { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live grep (search text)" },

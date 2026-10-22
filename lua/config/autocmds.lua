@@ -76,6 +76,7 @@ autocmd("FileType", {
   end,
 })
 
+
 -- Golang indentation convention: tabs
 autocmd("FileType", {
   group = ft_group,
@@ -84,5 +85,24 @@ autocmd("FileType", {
     vim.opt_local.expandtab = false
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
+  end,
+})
+
+-- 7. Keep Neovim background transparent so it matches the terminal background.
+--    Some plugins (e.g. bufferline, dashboard) re-apply a solid color on ColorScheme
+--    events, so we re-enforce transparency every time a colorscheme is applied.
+local transparent_group = augroup("TransparentBg", { clear = true })
+autocmd({ "ColorScheme", "VimEnter" }, {
+  group = transparent_group,
+  desc = "Strip Normal background to let terminal bg show through",
+  callback = function()
+    local hl_groups = {
+      "Normal", "NormalNC", "NormalFloat",
+      "SignColumn", "LineNr", "LineNrAbove", "LineNrBelow",
+      "EndOfBuffer", "FoldColumn", "StatusColumnSeparator",
+    }
+    for _, hl in ipairs(hl_groups) do
+      vim.api.nvim_set_hl(0, hl, { bg = "none" })
+    end
   end,
 })
