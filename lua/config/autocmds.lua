@@ -68,7 +68,19 @@ autocmd("FileType", {
 local ft_group = augroup("FileTypeIndents", { clear = true })
 autocmd("FileType", {
   group = ft_group,
-  pattern = { "lua", "javascript", "typescript", "json", "yaml", "html", "css", "markdown" },
+  pattern = {
+    "lua",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "yaml",
+    "html",
+    "css",
+    "markdown",
+    "mdx",
+  },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2

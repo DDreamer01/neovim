@@ -87,6 +87,12 @@ return {
         "pyright",
         "gopls",
         "lua-language-server",
+        "typescript-language-server",
+        "tailwindcss-language-server",
+        "eslint-lsp",
+        "css-lsp",
+        "mdx-analyzer",
+        "prettier",
         "shellcheck",
         "shfmt",
         "ruff",
@@ -100,6 +106,55 @@ return {
     local servers = {
       -- Bash language server
       bashls = {},
+
+      -- TypeScript & React
+      ts_ls = {
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+            },
+          },
+        },
+      },
+
+      -- Tailwind CSS
+      tailwindcss = {
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "mdx",
+        },
+      },
+
+      -- ESLint (Next.js / React / TypeScript linter)
+      eslint = {
+        settings = {
+          workingDirectories = { mode = "auto" },
+        },
+      },
+
+      -- CSS Language Server
+      cssls = {},
+
+      -- MDX Language Server
+      mdx_analyzer = {
+        filetypes = { "mdx" },
+      },
 
       -- Python (pyright)
       pyright = {
@@ -151,7 +206,17 @@ return {
 
     -- Setup Mason-lspconfig to ensure key servers are present
     require("mason-lspconfig").setup({
-      ensure_installed = { "bashls", "pyright", "gopls", "lua_ls" },
+      ensure_installed = {
+        "bashls",
+        "pyright",
+        "gopls",
+        "lua_ls",
+        "ts_ls",
+        "tailwindcss",
+        "eslint",
+        "cssls",
+        "mdx_analyzer",
+      },
       automatic_installation = true,
       handlers = {
         function(server_name)
