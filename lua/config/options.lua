@@ -62,9 +62,63 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- Custom Filetype Detection
+-- Custom Filetype Detection & Tree-sitter Setup
 vim.filetype.add({
   extension = {
     mdx = "mdx",
   },
 })
+
+-- Tree-sitter directive & range compatibility shim for Neovim 0.10+ / 0.12
+-- In Neovim 0.10+, tree-sitter directive handlers receive captures as `table<integer, TSNode[]>`.
+-- Legacy directives (such as nvim-treesitter's set-lang-from-info-string! and downcase!) expect
+-- TSNode instead of TSNode[] (tables), causing 'attempt to call method range (a nil value)'.
+local orig_add_directive = vim.treesitter.query.add_directive
+vim.treesitter.query.add_directive = function(name, handler, opts)
+  local wrapped_handler = function(match, pattern, bufnr, pred, metadata)
+    local unwrap_match = setmetatable({}, {
+      __index = function(_, k)
+        local val = match[k]
+        if type(val) == "table" and val[1] and type(val[1]) == "userdata" then
+          return val[1]
+        end
+        return val
+      end,
+      __newindex = function(_, k, v)
+        match[k] = v
+      end,
+      __pairs = function()
+        local next_fn, t, k = pairs(match)
+        return function(_, key)
+          local nk, nv = next_fn(t, key)
+          if type(nv) == "table" and nv[1] and type(nv[1]) == "userdata" then
+            nv = nv[1]
+          end
+          return nk, nv
+        end, t, k
+      end,
+    })
+    return handler(unwrap_match, pattern, bufnr, pred, metadata)
+  end
+  return orig_add_directive(name, wrapped_handler, opts)
+end
+
+-- Safely unwrap if a node table { TSNode } is passed to get_range or get_node_text
+local orig_get_range = vim.treesitter.get_range
+vim.treesitter.get_range = function(node, source, metadata)
+  if type(node) == "table" and node[1] then
+    node = node[1]
+  end
+  return orig_get_range(node, source, metadata)
+end
+
+local orig_get_node_text = vim.treesitter.get_node_text
+vim.treesitter.get_node_text = function(node, source, opts)
+  if type(node) == "table" and node[1] then
+    node = node[1]
+  end
+  return orig_get_node_text(node, source, opts)
+end
+
+-- Register markdown parser for mdx files
+vim.treesitter.language.register("markdown", "mdx")

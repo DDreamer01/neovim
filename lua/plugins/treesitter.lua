@@ -55,5 +55,7 @@ return {
     require("nvim-treesitter.configs").setup(opts)
     -- Map 'sh' filetype to 'bash' treesitter parser
     vim.treesitter.language.register("bash", "sh")
+    -- Map 'mdx' filetype to 'markdown' treesitter parser
+    vim.treesitter.language.register("markdown", "mdx")
   end,
 }
